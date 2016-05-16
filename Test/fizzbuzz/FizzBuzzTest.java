@@ -50,25 +50,25 @@ public class FizzBuzzTest {
 	 * {@link fizzbuzz.FizzBuzz#getFizzBuzz()} のためのテスト・メソッド。
 	 */
 	@Test
-	public void testGetFizzBuzz_CaseMutlipleOfThree(){
-		System.out.println("3の倍数の時");
+	public void testGetFizzBuzz_3の倍数の時(){
+
 		assertThat("Fizz", is(FizzBuzz.getFizzBuzz(6)));
 	}
 
 	@Test
-	public void testGetFizzBuzz_CaseMutlipleOfFive(){
-		System.out.println("5の倍数の時");
+	public void testGetFizzBuzz_5の倍数の時(){
+
 		assertThat("Buzz", is(FizzBuzz.getFizzBuzz(20)));
 	}
 
 	@Test
-	public void testGetFizzBuzz_CaseMultipleOfThreeAndFive() {
-		System.out.println("3と5の倍数の時");
+	public void testGetFizzBuzz_3と5の倍数の時() {
+
 		assertThat("FizzBuzz", is(FizzBuzz.getFizzBuzz(15)));
 	}
 	@Test
-	public void testGetFizzBuzz_CaseNotMultipleOfThreeOrFive(){
-		System.out.println("3と5の倍数ではないとき");
+	public void testGetFizzBuzz_3と5の倍数ではないとき(){
+
 		assertThat("23", is(FizzBuzz.getFizzBuzz(23)));
 	}
 }
