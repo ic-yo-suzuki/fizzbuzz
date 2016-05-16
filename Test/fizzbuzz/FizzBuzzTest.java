@@ -50,25 +50,57 @@ public class FizzBuzzTest {
 	 * {@link fizzbuzz.FizzBuzz#getFizzBuzz()} のためのテスト・メソッド。
 	 */
 	@Test
-	public void testGetFizzBuzz_3の倍数の時(){
-
+	public void 三の倍数の時(){
+		assertThat("2", is(FizzBuzz.getFizzBuzz(2)));
+		assertThat("Fizz", is(FizzBuzz.getFizzBuzz(3)));
+		assertThat("4", is(FizzBuzz.getFizzBuzz(4)));
 		assertThat("Fizz", is(FizzBuzz.getFizzBuzz(6)));
 	}
 
 	@Test
-	public void testGetFizzBuzz_5の倍数の時(){
+	public void 負値の三の倍数の時(){
+		assertThat("Fizz", is(FizzBuzz.getFizzBuzz(-3)));
+		assertThat("Fizz", is(FizzBuzz.getFizzBuzz(-18)));
+	}
 
+	@Test
+	public void 五の倍数の時(){
+		assertThat("19", is(FizzBuzz.getFizzBuzz(19)));
 		assertThat("Buzz", is(FizzBuzz.getFizzBuzz(20)));
+		assertThat("22", is(FizzBuzz.getFizzBuzz(22)));
+	}
+
+
+	@Test
+	public void 負値の五の倍数の時(){
+		assertThat("Buzz", is(FizzBuzz.getFizzBuzz(-5)));
+		assertThat("Buzz", is(FizzBuzz.getFizzBuzz(-100)));
 	}
 
 	@Test
-	public void testGetFizzBuzz_3と5の倍数の時() {
-
+	public void 三と五の倍数の時() {
 		assertThat("FizzBuzz", is(FizzBuzz.getFizzBuzz(15)));
+		assertThat("FizzBuzz", is(FizzBuzz.getFizzBuzz(600)));
+		assertThat("FizzBuzz", is(FizzBuzz.getFizzBuzz(-30)));
 	}
-	@Test
-	public void testGetFizzBuzz_3と5の倍数ではないとき(){
 
-		assertThat("23", is(FizzBuzz.getFizzBuzz(23)));
+	@Test
+	public void ゼロの場合(){
+		assertThat("0", is(FizzBuzz.getFizzBuzz(0)));
 	}
+
+	@Test(expected = NumberFormatException.class)
+	public void 大きな数値の場合(){
+		assertThat("2147483647", is(FizzBuzz.getFizzBuzz(Integer.parseInt("2147483647"))));
+		assertThat("2147483648", is(FizzBuzz.getFizzBuzz(Integer.parseInt("2147483648"))));
+		assertThat("-2147483647", is(FizzBuzz.getFizzBuzz(Integer.parseInt("-2147483647"))));
+		assertThat("-2147483648", is(FizzBuzz.getFizzBuzz(Integer.parseInt("-2147483648"))));
+	}
+
+	@Test(expected = NumberFormatException.class)
+	public void 無効な数値と文字の場合(){
+		assertThat("+", is(FizzBuzz.getFizzBuzz(Integer.parseInt("+"))));		// 文字
+		assertThat("3.3", is(FizzBuzz.getFizzBuzz(Integer.parseInt("3.3"))));	// 小数点数
+	}
+
 }
